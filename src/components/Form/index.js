@@ -5,48 +5,53 @@ import Button from "../Button";
 import "./Form.css";
 
 const Form = (props) => {
-  const times = ["Programação", "Front-End", "Data Science", "Devops", "UX e Design"];
+  const teams = ["Programação", "Front-End", "Data Science", "Devops", "UX e Design"];
 
-  const [nome, setNome] = useState("");
-  const [cargo, setCargo] = useState("");
-  const [imagem, setImagem] = useState("");
-  const [time, setTime] = useState("");
+  const [name, setName] = useState("");
+  const [position, setPosition] = useState("");
+  const [image, setImage] = useState("");
+  const [team, setTeam] = useState("");
 
-  const onSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    props.onNewCollaboratorAdded({
-      nome,
-      cargo,
-      imagem,
-      time,
+    props.addCollaborator({
+      name,
+      position,
+      image,
+      team,
     });
+
+    setName("");
+    setPosition("");
+    setImage("");
+    setTeam("");
   };
 
   return (
     <section className="form">
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <h2>Preencha os dados para criar o card do colaborador.</h2>
         <InputText
           required={true}
           label="Nome"
           placeholder="Digite o seu nome"
-          value={nome}
-          onChange={(value) => setNome(value)}
+          value={name}
+          onChange={(value) => setName(value)}
         />
         <InputText
           required={true}
           label="Cargo"
           placeholder="Digite o seu cargo"
-          value={cargo}
-          onChange={(value) => setCargo(value)}
+          value={position}
+          onChange={(value) => setPosition(value)}
         />
         <InputText
           label="Imagem"
           placeholder="Digite o endereço da sua imagem"
-          value={imagem}
-          onChange={(value) => setImagem(value)}
+          value={image}
+          onChange={(value) => setImage(value)}
         />
-        <Dropdown required={true} label="Time" itens={times} value={time} onChange={(value) => setTime(value)} />
+        <Dropdown required={true} label="Time" items={teams} value={team} onChange={(value) => setTeam(value)} />
         <Button>Criar Card</Button>
       </form>
     </section>

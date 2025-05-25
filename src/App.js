@@ -5,14 +5,14 @@ import Form from "./components/Form";
 function App() {
   const [collaborators, setCollaborators] = useState([]);
 
-  const onNewCollaboratorAdded = (collaborator) => {
+  const addCollaborator = (collaborator) => {
     setCollaborators([...collaborators, collaborator]);
   };
 
   return (
     <div className="App">
       <Banner />
-      <Form onNewCollaboratorAdded={(collaborator) => onNewCollaboratorAdded(collaborator)} />
+      <Form addCollaborator={addCollaborator} />
     </div>
   );
 }
