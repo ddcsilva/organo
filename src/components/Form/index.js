@@ -4,7 +4,7 @@ import Dropdown from "../Dropdown";
 import Button from "../Button";
 import "./Form.css";
 
-const Form = () => {
+const Form = (props) => {
   const times = ["Programação", "Front-End", "Data Science", "Devops", "UX e Design"];
 
   const [nome, setNome] = useState("");
@@ -14,7 +14,12 @@ const Form = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log("Formulário enviado => ", nome, cargo, imagem, time);
+    props.onNewCollaboratorAdded({
+      nome,
+      cargo,
+      imagem,
+      time,
+    });
   };
 
   return (
