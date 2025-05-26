@@ -6,7 +6,7 @@ import "./Form.css";
 
 const Form = (props) => {
   const [name, setName] = useState("");
-  const [position, setPosition] = useState("");
+  const [role, setRole] = useState("");
   const [image, setImage] = useState("");
   const [team, setTeam] = useState("");
 
@@ -14,13 +14,13 @@ const Form = (props) => {
     event.preventDefault();
     props.addCollaborator({
       name,
-      position,
+      role,
       image,
       team,
     });
 
     setName("");
-    setPosition("");
+    setRole("");
     setImage("");
     setTeam("");
   };
@@ -40,8 +40,8 @@ const Form = (props) => {
           required={true}
           label="Cargo"
           placeholder="Digite o seu cargo"
-          value={position}
-          onChange={(value) => setPosition(value)}
+          value={role}
+          onChange={(value) => setRole(value)}
         />
         <InputText
           label="Imagem"
