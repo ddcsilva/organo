@@ -53,7 +53,13 @@ function App() {
       <Banner />
       <Form teams={teams.map((team) => team.name)} addCollaborator={addCollaborator} />
       {teams.map((team) => (
-        <Team key={team.name} name={team.name} primaryColor={team.primaryColor} secondaryColor={team.secondaryColor} />
+        <Team
+          key={team.name}
+          name={team.name}
+          primaryColor={team.primaryColor}
+          secondaryColor={team.secondaryColor}
+          collaborators={collaborators.filter((collaborator) => collaborator.team === team.name)}
+        />
       ))}
     </div>
   );
